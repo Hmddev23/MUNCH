@@ -2,11 +2,11 @@
 import express, { Request, Response, NextFunction } from 'express';
 
 import {
-  CreateVandor,
+  CreateVendor,
   GetDeliveryUsers,
   GetTransactionById,
   GetTransactions,
-  GetVandorByID,
+  GetVendorByID,
   GetVanndors,
   VerifyDeliveryUser
 } from '../controllers';
@@ -15,8 +15,8 @@ import {
 const router = express.Router();
 
 router.get('/vendors', GetVanndors);
-router.get('/vendor/:id', GetVandorByID);
-router.post('/vendor', CreateVandor);
+router.get('/vendor/:id', GetVendorByID);
+router.post('/vendor', CreateVendor);
 
 router.get('/transactions', GetTransactions);
 router.get('/transaction/:id', GetTransactionById);

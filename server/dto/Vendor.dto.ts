@@ -1,5 +1,5 @@
 
-export interface CreateVandorInput{
+export interface CreateVendorInput{
   name: string;
   ownerName: string;
   foodType: [string];

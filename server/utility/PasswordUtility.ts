@@ -42,9 +42,9 @@ export const ValidateSignature = async (req: Request) => {
       return true;
     }
     catch(err) {
-      return false
+      return false;
     } 
   }
 
-  return false
+  return false;
 };

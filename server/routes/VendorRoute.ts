@@ -62,4 +62,4 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 });
 
 
-export { router as VandorRoute };
+export { router as VendorRoute };

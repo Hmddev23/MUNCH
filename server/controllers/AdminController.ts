@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 
 import { DeliveryUser, Vendor, Transaction } from '../models';
 import { GeneratePassword, GenerateSalt } from '../utility';
-import { CreateVandorInput } from '../dto';
+import { CreateVendorInput } from '../dto';
 
 
 export const FindVendor = async (id: String | undefined, email?: string) => {
@@ -15,7 +15,7 @@ export const FindVendor = async (id: String | undefined, email?: string) => {
   }
 }
 
-export const CreateVandor = async (req: Request, res: Response, next: NextFunction) => {
+export const CreateVendor = async (req: Request, res: Response, next: NextFunction) => {
   const {
     name,
     address,
@@ -25,13 +25,13 @@ export const CreateVandor = async (req: Request, res: Response, next: NextFuncti
     password,
     ownerName,
     phone
-  }  = <CreateVandorInput>req.body;
+  }  = <CreateVendorInput>req.body;
 
-  const existingVandor = await FindVendor('', email);
+  const existingVendor = await FindVendor('', email);
 
-  if(existingVandor !== null) {
+  if(existingVendor !== null) {
     return res.json({
-      'message': 'A vandor is exist with this email ID'
+      'message': 'A vendor is exist with this email ID'
     });
   }
 
@@ -40,7 +40,7 @@ export const CreateVandor = async (req: Request, res: Response, next: NextFuncti
   // encrypt the password using the salt
   const userPassword = await GeneratePassword(password, salt);
 
-  const createdVandor =  await Vendor.create({
+  const createdVendor =  await Vendor.create({
     name: name,
     address: address,
     pincode: pincode,
@@ -57,7 +57,7 @@ export const CreateVandor = async (req: Request, res: Response, next: NextFuncti
     lng: 0
   });
 
-  return res.json(createdVandor);
+  return res.json(createdVendor);
 }
 
 export const GetVanndors = async (req: Request, res: Response, next: NextFunction) => {
@@ -72,7 +72,7 @@ export const GetVanndors = async (req: Request, res: Response, next: NextFunctio
   });
 }
 
-export const GetVandorByID = async (req: Request, res: Response, next: NextFunction) => {
+export const GetVendorByID = async (req: Request, res: Response, next: NextFunction) => {
   const vendorId = req.params.id;
   const vendors = await FindVendor(vendorId);
 
@@ -81,7 +81,7 @@ export const GetVandorByID = async (req: Request, res: Response, next: NextFunct
   }
 
   return res.json({
-    'message': `vandor with id ${vendorId} does not exist`
+    'message': `vendor with id ${vendorId} does not exist`
   });
 }
 
