@@ -33,5 +33,11 @@ export const App = async (app: Application) => {
   app.use('/delivery', DeliveryRoute);
   app.use(ShoppingRoute);
 
+  app.get('/', (req, res) => {
+    res.status(200).json({
+      'message': 'hello world'
+    });
+  })
+
   return app;
 }

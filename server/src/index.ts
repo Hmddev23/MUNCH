@@ -5,7 +5,7 @@ import 'dotenv/config';
 import { App, dbConnection } from './services';
 
 
-const startServer = async () => {
+export const startServer = async () => {
   const app = express();
   const port = process.env.PORT || 8000;
 
